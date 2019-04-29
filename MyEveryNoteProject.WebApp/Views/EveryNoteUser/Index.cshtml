@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MyEveryNoteProject.Entities.EveryNoteUser>
+@using MyEveryNoteProject.WebApp
+@{
+    //Layout = "~/Views/Shared/_BackgroundLayout.cshtml";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+
+
+
+    <p>
+        @BootstrapHelper.OutlineLinkButton("/EveryNoteUser/Create/", "info", string.Empty, string.Empty, "fas fa-plus-circle", "Create New")
+    </p>
+    <table class="table table-hover">
+
+        <thead>
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.IsAdmin)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.ModifierUser)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>*@
+            </tr>
+        </thead>
+
+
+
+        @foreach (var item in Model)
+        {
+        <tbody>
+            <tr class="table-success">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                @*<td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>*@
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.IsAdmin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifierUser)
+                </td>
+                <td>
+                    @BootstrapHelper.DefaultLinkButton("/EveryNoteUser/Edit/" + item.Id, "warning", "btn-sm", "Edit", "far fa-edit", string.Empty)
+                    @BootstrapHelper.DefaultLinkButton("/EveryNoteUser/Details/" + item.Id, "info", "btn-sm", "Details", "fas fa-search", string.Empty)
+                    @BootstrapHelper.DefaultLinkButton("/EveryNoteUser/Delete/" + item.Id, "danger", "btn-sm", "Delete", "fas fa-trash-alt", string.Empty)
+                </td>
+            </tr>
+        </tbody>
+        }
+
+    </table>
+
+
+
+

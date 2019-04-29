@@ -1,0 +1,21 @@
+﻿@using MyEveryNoteProject.WebApp.Models
+@using MyEveryNoteProject.Entities
+
+
+@{
+    List<Category> list_category = CacheHelper.GetCategoriesFromCache();
+}
+
+
+<div class="row justify-content-center mb-5 pb-5">
+    <div class="col-md-7 text-center heading-section ftco-animate">
+        <h2><a id="categoryids" data-partial-category-id="0" data-likecntrl="@false" style="color:#2F88FB;"> Categories </a></h2>
+        @foreach (Category cat in list_category)
+        {
+            <span><a id="categoryids" data-partial-category-id="@cat.Id" data-likecntrl="@false" title="@cat.Description"  style="color:#2F88FB;">@cat.Title</a>//</span>
+        }
+    </div>
+</div>
+
+@*href="/Home/Category/@cat.Id"*@
+@*Bunun yerine 2.bir yol ise PartialPage donen Action kullanmanız.Notlardan bakabilirsin.*@

@@ -1,0 +1,76 @@
+﻿@using MyEveryNoteProject.Entities.ValueObjects
+@using MyEveryNoteProject.Entities
+@model Article
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="ftco-section">
+    <div class="container mt-5">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span>Blog</span>
+                <h2>UNWEAS</h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <h2 class="mb-3 mt-5">#@Model.Title</h2>
+                <p>
+                    <img src="~/images/articleimg/@Model.ArticleImageFileName" alt="" class="img-fluid">
+                </p>
+                <p id="fullpagearticleid" data-artid="@Model.Id" >@Model.Text</p>
+                <div class="tag-widget post-tag-container mb-5 mt-5">
+                    <div class="tagcloud">
+                        <a style="color:aliceblue;" class="tag-cloud-link">@Model.Owner.Username</a>
+                        <a style="color:aliceblue;" class="tag-cloud-link">@Model.ModifiedOn</a>
+                        <a href="/Home/Index" style="color:palegoldenrod;" class="tag-cloud-link">Go HomePage</a>
+                    </div>
+                </div>
+
+                <div class="about-author d-flex pt-5">
+                    <div class="bio align-self-md-center mr-4">
+                        <img src="~/images/userimg/@Model.Owner.ProfileImageFileName" alt="Image placeholder" class="img-fluid mb-2">
+                    </div>
+                    <div class="desc align-self-md-center">
+                        <h3>About The Author</h3>
+                        <p>Yazarimiz bilgisayar muhendislği ögrencisi olup bilgisayar bilimleri alanında machine learning , image processing , c programlama c++ programlama , java ve c# ile birilikte .Net teknolojileri üzerinde asp net mvc ve yeni .net core teknoloji üzerinde calismalar yapmaktadır.</p>
+                    </div>
+                </div>
+
+                @*Comments Partial Gelecek*@
+                <div id="ArticleHolePageCommentSection">
+
+                @Html.Action("ArticleWholePagePartialView", new { articleid = ViewBag.ArticleID  })
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

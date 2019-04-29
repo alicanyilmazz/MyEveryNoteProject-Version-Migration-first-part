@@ -1,0 +1,75 @@
+﻿@using MyEveryNoteProject.Entities
+@using MyEveryNoteProject.WebApp.Models
+@model List<Comment>
+
+@{
+    EveryNoteUser user = CurrentSession.User;
+}
+@*@if (Model.Select(x => x.Id).FirstOrDefault() == 0)
+{
+    <div class="alert alert-danger" role="alert">
+        There is no comment for this article!
+    </div>
+
+}*@
+
+@{
+    int val = (Model.Select(x => x.Id).Count());
+
+}
+
+@*Comments Message*@
+<div class="pt-5 mt-5">
+    <h3 class="mb-5">@val Comments</h3>
+    <ul class="comment-list">
+        @foreach (Comment item in Model)
+        {
+
+            <li class="comment">
+                <div class="vcard bio">
+                    <img src="~/images/userimg/defaultuser.png" alt="Image placeholder">
+                </div>
+                <div class="comment-body">
+                    <h3>@item.Owner.Username</h3>
+                    <div class="meta">@item.ModifiedOn</div>
+                    <p id="comment_text_@item.Id" contenteditable="false">@item.Text</p>
+                    @if (user != null && user.Id == item.Owner.Id)
+                    {
+                        <p>
+                            <a class="reply btneditdefault" data-edit-mode="false" onclick="doCommentfullpage(this,'edit_clicked',@item.Id,'#comment_text_@item.Id');" style="font-size:13px;"><i class="far fa-edit cntrl"></i> Edit</a>
+                            <a class="reply btndelete" onclick="doCommentfullpage(this,'delete_clicked',@item.Id);" style="font-size:13px;"><i class="fas fa-trash-alt"></i> Delete</a>
+                        </p>
+
+
+                    }
+                    @*<p><a href="#" class="reply">Reply</a></p>*@
+                </div>
+            </li>
+
+        }
+    </ul>
+    @*Comments Leave*@
+    @if (user != null)
+    {
+
+        <div class="comment-form-wrap pt-5">
+            <h3 class="mb-5">Leave a comment</h3>
+            <form action="#">
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="" id="new_comment_text" cols="30" rows="3" placeholder="your comment..." class="form-control" maxlength="216"></textarea>
+                    @*<input type="text" id="new_comment_text" class="form-control" placeholder="your comment..." aria-label="Recipient's username" aria-describedby="button-addon2" style="border-color:burlywood;border-radius:3px;">*@
+                </div>
+                <div class="form-group">
+                    <button class="btn py-3 px-4 btn-outline-light" type="button" id="button-addon2" onclick="doCommentfullpage(this,'new_clicked',-1);">send</button>
+                    @*<input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">*@
+                </div>
+
+            </form>
+        </div>
+
+    }
+
+</div>
+
+

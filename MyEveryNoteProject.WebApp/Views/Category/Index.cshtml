@@ -1,0 +1,64 @@
+﻿@using MyEveryNoteProject.WebApp
+@model IEnumerable<MyEveryNoteProject.Entities.Category>
+
+@{
+    //Layout = "~/Views/Shared/_BackgroundLayout.cshtml";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+
+
+
+<p>
+    @BootstrapHelper.OutlineLinkButton("/Category/Create/", "info", string.Empty, string.Empty, "fas fa-plus-circle", "Create New")
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ModifierUser)
+            </th>
+            <th scope="col">
+                Operations
+            </th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr class="table-secondary">
+
+            <td> @Html.DisplayFor(modelItem => item.Title)</td>
+            <td> @Html.DisplayFor(modelItem => item.Description)</td>
+            <td> @Html.DisplayFor(modelItem => item.CreatedOn)</td>
+            <td> @Html.DisplayFor(modelItem => item.ModifiedOn)</td>
+            <td> @Html.DisplayFor(modelItem => item.ModifierUser)</td>
+
+            <td>
+                @BootstrapHelper.DefaultLinkButton("/Category/Edit/" + item.Id, "warning", "btn-sm", "Edit", "far fa-edit", string.Empty)
+                @BootstrapHelper.DefaultLinkButton("/Category/Details/" + item.Id, "info", "btn-sm", "Details", "fas fa-search", string.Empty)
+                @BootstrapHelper.DefaultLinkButton("/Category/Delete/" + item.Id, "danger", "btn-sm", "Delete", "fas fa-trash-alt", string.Empty)
+            </td>
+
+        </tr>
+
+
+    }
+
+</table>
+
+
+

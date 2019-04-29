@@ -1,0 +1,127 @@
+﻿@model MyEveryNoteProject.Entities.Article
+
+@{
+    ViewBag.Title = "Details";
+    //Layout = "~/Views/Shared/_BackgroundLayout.cshtml";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+}
+
+
+
+<div class="container" style="background-color:antiquewhite;border-radius:30px;padding:25px;margin-top:30px;">
+
+    <div class="jumbotron" style="background-color:burlywood;">
+        <h1 class="display-3 text-info">Article Information</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+
+        <dl class="dl-horizontal">
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.Categories.Title)</label>
+            </dt>
+
+            <dd>
+
+                <label>@Html.DisplayFor(model => model.Categories.Title)</label>
+            </dd>
+
+            <dt>
+
+                <label class="text-danger">@Html.DisplayNameFor(model => model.Title)</label>
+            </dt>
+
+            <dd>
+
+                <label>@Html.DisplayFor(model => model.Title)</label>
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.Text)</label>
+
+            </dt>
+
+            <dd>
+
+                <label>@Html.DisplayFor(model => model.Text)</label>
+            </dd>
+
+            <dt>
+
+                <label class="text-danger">@Html.DisplayNameFor(model => model.IsDraft)</label>
+            </dt>
+
+            <dd>
+
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.IsDraft)</label>
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.LikeCount)</label>
+
+            </dt>
+
+            <dd>
+                <label>@Html.DisplayFor(model => model.LikeCount)</label>
+
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.ArticleImageFileName)</label>
+
+            </dt>
+
+            <dd>
+                <label>@Html.DisplayFor(model => model.ArticleImageFileName)</label>
+
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.CreatedOn)</label>
+
+            </dt>
+
+            <dd>
+                <label>@Html.DisplayFor(model => model.CreatedOn)</label>
+
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.ModifiedOn)</label>
+
+            </dt>
+
+            <dd>
+
+                <label>@Html.DisplayFor(model => model.ModifiedOn)</label>
+            </dd>
+
+            <dt>
+
+                <label class="text-danger">@Html.DisplayNameFor(model => model.ModifierUser)</label>
+            </dt>
+
+            <dd>
+
+                <label>@Html.DisplayFor(model => model.ModifierUser)</label>
+            </dd>
+
+        </dl>
+
+        <p>
+            @BootstrapHelper.DefaultLinkButton("/Article/Edit/" + Model.Id, "warning", "btn-sm", string.Empty, "far fa-edit", "Edit")
+            @BootstrapHelper.DefaultLinkButton("/Article/Index/", "success", "btn-sm", string.Empty, "far fa-edit", "Back to List")
+        </p>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+

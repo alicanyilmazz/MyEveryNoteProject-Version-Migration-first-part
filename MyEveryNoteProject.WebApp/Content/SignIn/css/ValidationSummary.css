@@ -1,0 +1,41 @@
+﻿.validation-summary-errors {
+    margin-bottom: 30px;
+
+}
+    .validation-summary-errors ul li {
+        /*list-style-type: lower-latin;*/
+        color: deeppink;
+    }
+
+
+
+/*.validation-summary ul {
+    list-style-type: lower-latin;
+}
+
+.input-validation-error {
+    border-color: red;
+}
+
+.field-validation-error {
+    background-color: none;
+    color: deeppink;
+}
+
+.form-control {
+    color: cadetblue;
+}
+
+.control-label {
+    color: tomato;
+}
+
+.xxx {
+    color: palevioletred;
+}
+
+    .xxx:hover {
+        border-color: deeppink;
+        background-color: lightpink;
+        color: white;
+    }

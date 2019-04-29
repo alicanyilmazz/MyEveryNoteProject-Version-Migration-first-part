@@ -1,0 +1,60 @@
+﻿@using MyEveryNoteProject.Entities
+@using MyEveryNoteProject.WebApp.Models
+@model List<Comment>
+
+@{
+    EveryNoteUser user = CurrentSession.User;
+}
+@if (Model.Select(x => x.Id).FirstOrDefault() == 0)
+{
+    <div class="alert alert-danger" role="alert">
+        There is no comment for this article!
+    </div>
+
+}
+
+@foreach (Comment item in Model)
+{
+
+    <div class="media" style="margin-top:2px;margin-bottom:6px;">
+        <img src="~/images/history.jpg" style="width:64px;height:auto;" class="align-self-start mr-3" alt="...">
+        <div class="media-body">
+            @*<h5 class="mt-0" style="color:black;">@item.</h5>*@
+            <p style="font-size:small;width:380px;" id="comment_text_@item.Id" contenteditable="false">@item.Text</p>
+            <p class="mb-0 pull-left" style="font-size:small;"><i class="far fa-clock" style="color:firebrick;"></i> <span style="color:cadetblue;">@item.ModifiedOn</span>  - <i class="far fa-user" style="color:brown;"></i> <span style="color:cornflowerblue;">@item.Owner.Username</span> </p>
+            @if (user != null && user.Id == item.Owner.Id)
+            {
+                @*<span class="col-md-2 text-left">*@
+                <p class="pull-left">
+
+                    <button type="button" class="btn btn-warning btn-sm" data-edit-mode="false" onclick="doComment(this,'edit_clicked',@item.Id,'#comment_text_@item.Id');" style="border-radius:30px;"><i class="far fa-edit cntrl"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="doComment(this,'delete_clicked',@item.Id);" style="border-radius:30px;"><i class="fas fa-trash-alt"></i></button>
+
+                </p>
+                @*</span>*@
+            }
+
+
+        </div>
+    </div>
+
+}
+
+@if (user != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group input-group-sm mb-3">
+                <input type="text" id="new_comment_text" class="form-control" placeholder="your comment..." aria-label="Recipient's username" aria-describedby="button-addon2" style="border-color:burlywood;border-radius:3px;">
+                <div class="input-group-append">
+                    <button class="btn btn-info" type="button" id="button-addon2" onclick="doComment(this,'new_clicked',-1);" style="border-radius:3px;margin:0px;padding-left:4px;padding-right:4px;"><i class="far fa-share-square"></i> send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

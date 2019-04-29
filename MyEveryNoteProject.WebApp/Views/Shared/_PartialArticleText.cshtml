@@ -1,0 +1,20 @@
+﻿@using MyEveryNoteProject.Entities
+@model Article
+
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card" style="width: 18rem;display:contents;">
+            <img src="~/images/articleimg/@Model.ArticleImageFileName" class="card-img-top" alt="@Model.Title" style="width:300px;height:auto;">
+            <div class="card-body">
+                <h5 class="card-title" style="color:darkcyan;">@Model.Title</h5>
+                <p class="card-text">@Model.Text</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="background-color:moccasin;">  <i style="color:burlywood;" class="fas fa-user"></i> @Model.Owner.Username</li>
+                <li class="list-group-item" style="background-color:moccasin;">  <i style="color:burlywood;" class="far fa-clock"></i> @Model.ModifiedOn</li>
+            </ul>
+           
+        </div>
+    </div>
+</div>

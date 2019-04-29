@@ -1,0 +1,128 @@
+﻿@model MyEveryNoteProject.Entities.Article
+
+@{
+    ViewBag.Title = "Create";
+    //Layout = "~/Views/Shared/_BackgroundLayout.cshtml";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+
+@*<div class="container">*@
+    <div class="row">
+        <div class="col-md-9 ml-auto mr-auto" style="margin-top:20px;">
+            <div class="col-md-12">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header card-header-danger">
+                        <h3 class="card-title text-warning">Create Article</h3>
+               
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("Create", "Article", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(false)
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-6" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control ccc" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-6" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Text, 5, 30, new { @class = "form-control ccc" })
+                                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsDraft, htmlAttributes: new { @class = "control-label col-md-6" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(model => model.IsDraft)
+                                        @Html.ValidationMessageFor(model => model.IsDraft, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">*@
+                            @*@Html.LabelFor(model => model.ArticleImageFileName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10" style="margin-top:30px;margin-bottom:30px;">
+                                @*@Html.EditorFor(model => model.ArticleImageFileName, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @*<br />
+                                    <input type="file" name="ProfileImage" id="ProfileImage" class="form-control" aria-describedby="inputGroupFileAddon01">
+                                    <br />*@
+                                @*deneme*@
+                                <div class="custom-file">
+                                    <input type="file" name="ArticleImage" id="customFile" class="custom-file-input" aria-describedby="inputGroupFileAddon01">
+                                    <label  class="custom-file-label" for="customFile"></label>
+                                </div>
+                                @*deneme*@
+
+                                @*@Html.ValidationMessageFor(model => model.ArticleImageFileName, "", new { @class = "text-danger" })*@
+                            </div>
+                            @*</div>*@
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.LikeCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.LikeCount, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LikeCount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CategoryId, "Category Name", htmlAttributes: new { @class = "control-label col-md-6" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ModifiedOn, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ModifiedOn, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ModifierUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ModifierUser, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ModifierUser, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    @*<input type="submit" value="Create" class="btn btn-default" />*@
+                                    @BootstrapHelper.DefaultButton("secondary", "btn-sm", "submit", "fas fa-plus-circle", "Create")
+                                    @BootstrapHelper.DefaultLinkButton("/Article/Index/", "warning", "btn-sm", string.Empty, "far fa-arrow-alt-circle-left", "Back to List")
+                                </div>
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@*</div>*@
+
+

@@ -1,0 +1,128 @@
+﻿@model IEnumerable<MyEveryNoteProject.Entities.Article>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_BackgroundLayout.cshtml";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+
+
+
+
+    <p>
+        @BootstrapHelper.OutlineLinkButton("/Article/Create/", "info", string.Empty, string.Empty, "fas fa-plus-circle", "Create New")
+    </p>
+    @if (Model.Select(x => x.Id).FirstOrDefault() != 0)
+    {
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr >
+                <th scope="col">@Html.DisplayNameFor(model => model.Categories.Title)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Title)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Text)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.IsDraft)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.LikeCount)</th>
+                @*<th scope="col"> Operations</th>*@
+            </tr>
+        </thead>
+
+
+        @*<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categories.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDraft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LikeCount)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.ArticleImageFileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifierUser)
+                </th>
+            <th></th>
+        </tr>*@
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr class="table-info">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categories.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        &nbsp; &nbsp; &nbsp;@Html.DisplayFor(modelItem => item.IsDraft)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LikeCount)
+                    </td>
+                    @*<td>
+                    @Html.DisplayFor(modelItem => item.ArticleImageFileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifierUser)
+                </td>*@
+                    <td>
+                        <button class="btn btn-light btn-sm" type="button" data-toggle="modal" data-target="#modal_comment" data-article-id="@item.Id"><i class="far fa-share-square"></i></button>
+                        @BootstrapHelper.DefaultLinkButton("/Article/Edit/" + item.Id, "warning", "btn-sm", "Edit", "far fa-edit", string.Empty)
+                        @BootstrapHelper.DefaultLinkButton("/Article/Details/" + item.Id, "info", "btn-sm", "Details", "fas fa-search", string.Empty)
+                        @BootstrapHelper.DefaultLinkButton("/Article/Delete/" + item.Id, "danger", "btn-sm", "Delete", "fas fa-trash-alt", string.Empty)
+
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+     
+
+    </table>
+    }
+    else
+    {
+        <div class="alert alert-rose" role="alert">
+            Your article is not available.
+        </div>
+    }
+
+
+@BootstrapHelper.ModalPopup(id: "modal_comment", title: "Comments", mheadercolor: "burlywood", mbodycolor: "palegoldenrod", mfootercolor: "burlywood", btnmargin: "25px;")
+
+
+
+<script src="~/Content/Modals/CommentModal.js"></script>
+<link href="~/Content/Modals/CommentModal.css" rel="stylesheet" />
+
+
+@*deneme*@
+

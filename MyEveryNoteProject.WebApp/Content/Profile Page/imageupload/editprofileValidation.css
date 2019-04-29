@@ -1,0 +1,20 @@
+﻿
+.validation-summary-errors {
+    background-color: antiquewhite;
+    border-radius: 30px;
+    border: double;
+    border-color: orange;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+    .validation-summary-errors ul li {
+        /*list-style-type: lower-latin;*/
+        color: deeppink;
+        padding-top: 10px;
+        padding-right: 12px;
+    }
+
+    .validation-summary-errors ul {
+        list-style-type: circle;
+    }

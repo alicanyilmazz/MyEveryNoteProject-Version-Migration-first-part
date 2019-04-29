@@ -1,0 +1,71 @@
+﻿@using MyEveryNoteProject.WebApp
+@model MyEveryNoteProject.Entities.Category
+
+@{
+    //Layout = "~/Views/Shared/_BackgroundLayout.cshtml";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+
+
+<div class="container">
+
+    <div class="jumbotron" style="background-color:burlywood;">
+        <h1 class="display-3 text-success">Category Detail</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+
+        <dl class="dl-horizontal">
+            <dt>
+                <label class="text-danger">  @Html.DisplayNameFor(model => model.Title)</label>
+            </dt>
+
+            <dd>
+                <label>@Html.DisplayFor(model => model.Title)</label>
+            </dd>
+
+            <dt>
+                <label class="text-danger"> @Html.DisplayNameFor(model => model.Description)</label>
+            </dt>
+
+            <dd>
+                <label> @Html.DisplayFor(model => model.Description)</label>
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.CreatedOn)</label>
+            </dt>
+
+            <dd>
+                <label>@Html.DisplayFor(model => model.CreatedOn)</label>
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.ModifiedOn)</label>
+            </dt>
+
+            <dd>
+                <label> @Html.DisplayFor(model => model.ModifiedOn)</label>
+            </dd>
+
+            <dt>
+                <label class="text-danger">@Html.DisplayNameFor(model => model.ModifierUser)</label>
+            </dt>
+
+            <dd>
+                <label>@Html.DisplayFor(model => model.ModifierUser)</label>
+            </dd>
+
+        </dl>
+
+
+        <p>
+            @BootstrapHelper.DefaultLinkButton("/Category/Edit/" + Model.Id, "warning", "btn-sm", string.Empty, "far fa-edit", "Edit")
+            @BootstrapHelper.DefaultLinkButton("/Category/Index/", "success", "btn-sm", string.Empty, "far fa-edit", "Back to List")
+        </p>
+
+    </div>
+
+</div>
+
+

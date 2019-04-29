@@ -1,0 +1,105 @@
+﻿@using MyEveryNoteProject.WebApp
+@using MyEveryNoteProject.Entities
+@using MyEveryNoteProject.WebApp.Models
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/InternalSketcjy.css" rel="stylesheet" />
+    @*<link href="~/Content/theme.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/Profile Page/imageupload/imageupload.css" rel="stylesheet" />
+    <link href="~/Content/Profile Page/imageupload/editprofileValidation.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/Modals/CommentModal.css" rel="stylesheet" />
+    <link href="~/Content/GeneralTheme/css/ScrollBar.css" rel="stylesheet" />
+    <link href="~/Content/Fontawesome/css/all.css" rel="stylesheet" />
+  
+</head>
+<body style="background-color:antiquewhite;">
+
+    @*Navbar Begin*@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/Home/Index"><span style="color:bisque;">UN</span><span style="color:orange;">WEAS</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color:cornflowerblue;">  <i class="fas fa-cube"></i> Blog Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="/Article/Create/"> <i class="far fa-edit"></i> Add Note</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/Article/Index/">  <i class="far fa-file-alt"></i> My Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/Article/MyLikedNotes/"> <i class="far fa-thumbs-up"></i> Liked Articles</a>
+                </li>
+                @if (CurrentSession.User.IsAdmin == true)
+                {
+
+                    <li class="nav-item">
+                        @BootstrapHelper.MenuLink("/Category/Create", "pink", "far fa-edit", "large", "3px", "ADD CATEGORY")
+                    </li>
+                    <li class="nav-item">
+                        @BootstrapHelper.MenuLink("/Category/Index", "aquamarine", "far fa-file-alt", "large", "5px", "CATEGORIES")
+                    </li>
+
+                    <li class="nav-item">
+                        @BootstrapHelper.MenuLink("/EveryNoteUser/Create", "blanchedalmond", "fas fa-user-plus", "large", "3px", "ADD USER")
+                    </li>
+                    <li class="nav-item">
+                        @BootstrapHelper.MenuLink("/EveryNoteUser/Index", "coral", "fas fa-user-circle", "large", "5px", "USERS")
+                    </li>
+
+                }
+            </ul>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-info" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account Settings</a>
+                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+                        <a class="dropdown-item" href="/Home/ShowProfile">Show Profile</a>
+                        <a class="dropdown-item" href="/Home/EditProfile">Edit My Account</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Home/SignOut">Sign Out</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    @*Navbar End*@
+    @*Layout Section*@
+    <div style="margin-top:50px;">
+        @RenderBody()
+    </div>
+    @*Layout Section*@
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Content/Modals/CommentModal.js"></script>
+    <script src="~/Content/Profile Page/imageupload/imageupload.js"></script>
+    <script src="~/Content/Profile Page/imageupload/imageupload2.js"></script>
+    <script src="~/Content/Fontawesome/js/all.js"></script>
+</body>
+</html>
+
+
+@*deneme*@
+

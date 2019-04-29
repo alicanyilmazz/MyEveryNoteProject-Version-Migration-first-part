@@ -1,0 +1,64 @@
+﻿@using MyEveryNoteProject.WebApp
+@model MyEveryNoteProject.Entities.Category
+
+@{
+    //Layout = "~/Views/Shared/_BackgroundLayout.cshtml";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9 ml-auto mr-auto" style="margin-top:20px;">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @*denemebaslangic*@
+                <div class="col-md-12">
+                    <div class="card text-white bg-info mb-3">
+                        <div class="card-header card-header-danger" style="margin-bottom:0%;">
+                            <h4 class="card-title text-warning"><i class="fab fa-slack"></i> Create Category </h4>
+                            @*<p class="category">Category subtitle</p>*@
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-tabs">
+                                @Html.ValidationSummary(false)
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.Title, htmlAttributes: new { @class = "exampleFormControlInput1" })
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.Description, htmlAttributes: new { @class = "exampleFormControlInput1" })
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                                @BootstrapHelper.DefaultButton("secondary", "btn-sm", "submit", "fas fa-plus-circle", "Create")
+                                @BootstrapHelper.DefaultLinkButton("/Category/Index/", "warning", "btn-sm", string.Empty, "far fa-arrow-alt-circle-left", "Back to List")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*denemebitis*@
+
+
+            }
+
+        </div>
+    </div>
+    <div class="tab-content tab-space">
+        <div class="tab-pane active text-center gallery" id="studio">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

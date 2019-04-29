@@ -1,0 +1,180 @@
+﻿@using MyEveryNoteProject.Entities;
+@model List<Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="home-slider owl-carousel js-fullheight">
+    <div class="slider-item js-fullheight" style="background-image: url('../../images/art.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                    <p><a href="#" class="scroll">Last Categories</a></p>
+                    <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Art</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-item js-fullheight" style="background-image: url('../../images/history.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                    <p><a href="#" class="scroll">Top Categories</a></p>
+                    <h1 class="mb-3" data-scrollax="properties: {translateY: '30%', opacity: 1.6}">History</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-item js-fullheight" style="background-image: url('../../images/tch.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                    <p><a href="#" class="scroll">Trend Categories</a></p>
+                    <h1 class="mb-3" data-scrollax="properties: {translateY: '30%', opacity: 1.6}">Science</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- END slider -->
+
+<div class="container" style="padding-top:5%;">
+    @Html.Partial("_PartialCategories")
+</div>
+
+
+
+@*Articles Section*@
+<section class="ftco-section" style="padding-top:5px;">
+    <div class="container mt-5">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span>Blog</span>
+                <h2>Read our blog</h2>
+                <span><a style="color:palegoldenrod" id="categoryids" data-partial-category-id="0" data-likecntrl="@true"><i class="fas fa-theater-masks"></i> Most Liked </a></span>
+                <span><i style="font-size:x-large;" class="fab fa-galactic-senate"></i></span>&nbsp;
+                <span><a id="categoryids" data-partial-category-id="0" data-likecntrl="@false" style="color:palegoldenrod"> Last Post <i class="far fa-clock"></i></a></span>
+            </div>
+        </div>
+        <div id="nbr">
+            @*Yeni Begin*@
+
+            @Html.Action("TakeArticleBody")
+
+            @*Yeni End*@
+        </div>
+    </div>
+</section>
+
+
+@*Last Number Animation Section*@
+<section class="ftco-section ftco-counter" id="section-counter">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span>share your own knowledge and experience</span>
+                <h2 style="color:palegoldenrod;font-size:xx-large;">"If information is shared, it becomes meaningful." -<i style="color:whitesmoke"> UNWEAS</i></h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4 col-sm-4 counter-wrap ftco-animate">
+                <div class="block-18" style="text-align:center">
+                    <div class="text">
+                        <span class="ftco-label">Article</span>
+                        <strong style="font-size:xx-large" class="number" data-number="420">0</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 counter-wrap ftco-animate">
+                <div class="block-18" style="text-align:center">
+                    <div class="text">
+                        <span class="ftco-label">Coup of Coffee</span>
+                        <strong style="font-size:xx-large" class="number" data-number="420">0</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 counter-wrap ftco-animate">
+                <div class="block-18" style="text-align:center">
+                    <div class="text">
+                        <span class="ftco-label">Like</span>
+                        <strong style="font-size:xx-large" class="number" data-number="420">0</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+@*Sonradan eklediği Quick Menu Kısımı*@
+<style>
+    .fixed-action-btn {
+        position: fixed;
+        z-index: 998;
+        right: 35px;
+        bottom: 35px;
+        margin-bottom: 0;
+        padding-top: 15px;
+    }
+
+
+    .btn-floating.btn-lg {
+        width: 61.1px;
+        height: 61.1px;
+    }
+
+    .red {
+        background-color: palegoldenrod !important;
+    }
+</style>
+@*Movement Link*@
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    @*<a href="/Home/SignUp" class="btn-floating btn-lg red">
+            <i class="fas fa-pencil-alt"></i>
+        </a>*@
+    <button type="button" class="btn-floating btn-lg red" data-toggle="modal" data-target="#exampleModalCenter">
+        <i class="fas fa-pencil-alt"></i>
+    </button>
+
+</div>
+
+
+@*Modal*@
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:burlywood;">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Quick Menu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-color:palegoldenrod;">
+                @*BUrasi*@ @Html.Partial("_PartialCategories")
+            </div>
+            <div class="modal-footer" style="background-color:burlywood;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@*HelperModalPopup*@
+
+@BootstrapHelper.ModalPopup(id: "modal_comment", title: "Comments", mheadercolor: "burlywood", mbodycolor: "palegoldenrod", mfootercolor: "burlywood")
+
+@BootstrapHelper.ModalPopup(id: "modal_articledetail", title: "Article", mheadercolor: "burlywood", mbodycolor: "palegoldenrod", mfootercolor: "burlywood")
+
+@BootstrapHelper.ModalPopupImage(id: "modal_image_detail", title: "Image Detail", mheadercolor: "burlywood", mbodycolor: "palegoldenrod", mfootercolor: "burlywood")
+

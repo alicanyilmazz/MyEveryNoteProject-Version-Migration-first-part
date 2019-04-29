@@ -1,0 +1,127 @@
+﻿@using MyEveryNoteProject.Entities
+@model EveryNoteUser
+@{
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+
+<div class="container" style="text-align:-webkit-center;">
+
+<div class="main main-raised">
+    <div class="profile-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ml-auto mr-auto">
+                    <div class="profile">
+                        <div class="avatar">
+                            <img src="~/images/userimg/@Model.ProfileImageFileName" alt="Circle Image" style="max-width:40%;" class="img-raised rounded-circle img-fluid"> @*Burasi*@
+                        </div>
+                        <div class="name">
+                            <h3 class="title">@Model.Username</h3>
+                            <h6>Designer</h6>
+                            @*<a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="description text-center">
+                <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 ml-auto mr-auto">
+                    @using (Html.BeginForm("EditProfile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        @*denemebaslangic*@
+                        <div class="col-md-12">
+                            <div class="card text-white bg-info mb-3">
+                                <div class="card-header card-header-danger" style="margin-bottom:0%;">
+                                    <h4 class="card-title">Edit Your Information</h4>
+                                    @*<p class="category">Category subtitle</p>*@
+                                </div>
+                                <div class="card-body">
+                                    <div class="profile-tabs">
+                                        @*image upload begin*@
+                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+                                        <div class="contain animated bounce" style="margin-top:0px;">
+                                            <form id="form1" runat="server">
+                                                <div class="alert"></div>
+                                                <div id='img_contain'><img id="blah" class="img-fluid" style="border-radius:5%;" align='middle' src="~/images/userimg/@Model.ProfileImageFileName" alt="your image" title='' /></div>
+                                                @Html.HiddenFor(x => x.ProfileImageFileName)
+                                                <div class="input-group" style="margin-left:0px;">
+                                                    <div class="custom-file btn btn-success" style="width:20px;">
+                                                        <input type="file" id="inputGroupFile01" name="ProfileImage" class="imgInp custom-file-input" aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label" for="inputGroupFile01" style="color:palegoldenrod;">Choose file</label>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                        @*image upload end*@
+                                        @Html.ValidationSummary(false)
+                                        @Html.HiddenFor(model => model.Id)
+                                        @Html.HiddenFor(model => model.ModifierUser)
+                                        @Html.HiddenFor(model => model.ModifiedOn)
+
+                                        <div class="form-group">
+                                            @*<label for="exampleFormControlInput1">Name</label>
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">*@
+                                            @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "exampleFormControlInput1" })
+                                            @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                        <div class="form-group">
+                                            @*<label for="exampleFormControlInput1">Surname</label>
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Surname">*@
+                                            @Html.LabelFor(x => x.Surname, htmlAttributes: new { @class = "exampleFormControlInput1" })
+                                            @Html.EditorFor(x => x.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                        <div class="form-group">
+                                            @*<label for="exampleFormControlInput1">User Name</label>
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="User Name">*@
+                                            @Html.LabelFor(x => x.Username, htmlAttributes: new { @class = "exampleFormControlInput1" })
+                                            @Html.EditorFor(x => x.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                        <div class="form-group">
+                                            @*<label for="exampleFormControlInput1">Email address</label>
+                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">*@
+                                            @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "exampleFormControlInput1" })
+                                            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                        <div class="form-group">
+                                            @*<label for="inputPassword4">Password</label>
+                                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">*@
+                                            @Html.LabelFor(x => x.Password, htmlAttributes: new { @class = "exampleFormControlInput1" })
+                                            @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Send</button>
+                                        @Html.ActionLink("Cancel", "ShowProfile", "Home", null, new { @class = "btn btn-warning" })
+                                        @Html.ActionLink("Delete Profile", "RemoveProfileFeedBack", "Home", new { @class = "btn btn-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*denemebitis*@
+                        @* Buraya Modal gelecek*@
+
+                    }
+
+                </div>
+            </div>
+            <div class="tab-content tab-space">
+                <div class="tab-pane active text-center gallery" id="studio">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+

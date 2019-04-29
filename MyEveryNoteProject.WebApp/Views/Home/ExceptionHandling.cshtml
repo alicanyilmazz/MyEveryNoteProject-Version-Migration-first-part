@@ -1,0 +1,22 @@
+﻿@model Exception
+@{
+    ViewBag.Title = "ExceptionHandling";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="container" style="padding-top:300px;text-align:-webkit-center;">
+    <div class="card" style="width: 18rem;background-color:burlywood;">
+        <img src="~/images/Exception.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" style="color:cornflowerblue;">We encountered an error!</h5>
+            <p class="card-text" style="color:brown;">Error Message : @Model.Message</p>
+            @*<p class="card-text">@Model.StackTrace</p>*@
+            <p> @BootstrapHelper.DefaultLinkButton("mailto:littledarkerorblue03@gmail.com", "info", null, null, null, "Send Mail to Us")</p>
+            <p>  <a href="/Home/Index" class="btn btn-success">Home Page</a></p>
+        </div>
+    </div>
+</div>

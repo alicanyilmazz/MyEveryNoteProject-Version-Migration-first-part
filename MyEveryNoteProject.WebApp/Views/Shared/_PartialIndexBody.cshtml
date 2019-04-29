@@ -1,0 +1,63 @@
+﻿@using MyEveryNoteProject.WebApp.Models
+@using MyEveryNoteProject.Entities
+@model DataOperationManager
+
+
+
+
+
+<div class="row">
+    
+    @foreach (Article item in Model.data_article_list)
+    {
+        <div  class="col-md-4 ftco-animate fadeInUp ftco-animated" data-article-id="@item.Id">
+            <h4 style="color:palegoldenrod;">@item.Categories.Title</h4>
+            <h5>@item.Title</h5>
+            <div class="blog-entry">
+                <a href="#" id="catchimage" data-toggle="modal" data-target="#modal_image_detail" data-article-image-path="@item.ArticleImageFileName" class="block-20" style="background-image: url('/images/articleimg/@item.ArticleImageFileName');">
+                </a>
+                <div class="text p-4 d-block">
+                    <div class="meta mb-3">
+                        <div><a href="#"><i style="color:deeppink;" class="far fa-user"></i><i style="color:deepskyblue;"> @item.Owner.Username </i> - <i style="color:deeppink;" class="far fa-clock"></i> @item.ModifiedOn.ToString("dd.MM.yy HH:mm")</a></div>
+                    </div>
+                    <h3 class="heading">
+                        @if (string.IsNullOrEmpty(item.Text) == false && item.Text.Length > 20)
+                        {
+                            <a id="idarticleid" data-fullpagearticleid="@item.Id" href="/Home/ArticleWholePage/@item.Id"> @(item.Text.Substring(0, 20) + "...")</a>
+                            <button style="border-radius:50px;border-color:palegoldenrod;color:palegoldenrod;" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal_articledetail" data-article-id="@item.Id">more</button>
+                        }
+                        else
+                        {
+                            <a href="#">  @(item.Text)</a>
+
+                        }
+                    </h3>
+                    <div>
+                        <button style="border-radius: 25px;" type="button" class="btn btn-dark" data-liked="false" data-article-id="@item.Id"><span class="like-star"><i data-icon-id="" class="far fa-star"></i></span>&nbsp;<span class="like-count">@item.LikeCount</span>&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;
+                        <i class="far fa-comments"></i>&nbsp;&nbsp; <button style="border-radius: 25px;" type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal_comment" data-article-id="@item.Id">Comments</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div>
+
+<div class="row mt-5">
+    <div class="col text-center">
+        <div class="block-27">
+            <ul>
+                <li><a style="color:palegoldenrod;">&lt;</a></li>
+                @for (int i = 0; i < Model.number_of_elements; i++)
+                {
+
+                    <li id="pgngli"><a id="pagnumlink" style="color:palegoldenrod;" data-pagnum-categorid="@Model.categoryid" data-likecntrl="@Model.likecntrl" data-pagnum="@(i+1)">@(i + 1)</a></li>
+
+                }
+                <li><a style="color:palegoldenrod;">&gt;</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
